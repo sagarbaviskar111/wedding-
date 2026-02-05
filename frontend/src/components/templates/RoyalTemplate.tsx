@@ -10,6 +10,10 @@ import groomImg from "./Image/groom.jpg";
 import brideImg from "./Image/bride.jpg";
 import haldiImg from "./Image/haldi.jpg";
 import pherasImg from "./Image/pheras.jpg";
+import blackScalesImg from "./Image/black-scales.png";
+import ganeshaImg from "./Image/ganesha.png";
+import weddingRingsImg from "./Image/wedding-rings.png";
+import sacredFireImg from "./Image/sacred-fire.png";
 
 const greatVibes = Great_Vibes({ subsets: ["latin"], weight: "400" });
 const playfair = Playfair_Display({ subsets: ["latin"] });
@@ -57,7 +61,7 @@ export default function RoyalTemplate({ id }: { id: string }) {
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-amber-950/80" />
                     {/* Decorative Pattern Overlay */}
-                    <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/black-scales.png')]" />
+                    <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `url(${blackScalesImg.src})` }} />
                 </div>
 
                 {/* Main Content */}
@@ -70,28 +74,65 @@ export default function RoyalTemplate({ id }: { id: string }) {
                         transition={{ duration: 1 }}
                         className="mb-8"
                     >
-                        <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Deepak_oil_lamp.svg/1200px-Deepak_oil_lamp.svg.png" width={60} height={60} alt="Deepak" className="mx-auto drop-shadow-[0_0_15px_rgba(255,200,0,0.8)] filter brightness-150" />
+                        <Image src={ganeshaImg} width={80} height={80} alt="Ganesha" className="mx-auto drop-shadow-md hover:scale-110 transition-transform duration-500" />
                         <h2 className="text-amber-200 text-xl font-bold mt-4 tracking-widest uppercase font-serif drop-shadow-md">|| Shree Ganeshay Namah ||</h2>
                     </motion.div>
 
-                    <motion.div
-                        initial={{ scale: 0.9, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        transition={{ duration: 1, delay: 0.5 }}
-                        className="bg-black/20 backdrop-blur-sm p-8 md:p-12 rounded-[3rem] border border-amber-200/30 shadow-2xl inline-block"
-                    >
-                        <h1 className={`${greatVibes.className} text-6xl md:text-8xl lg:text-9xl text-transparent bg-clip-text bg-gradient-to-r from-amber-100 via-yellow-200 to-amber-100 drop-shadow-sm`}>
-                            {invitation.groom}
-                        </h1>
-                        <div className="flex items-center justify-center gap-6 my-2 text-white/80">
-                            <div className="h-[1px] w-20 bg-gradient-to-r from-transparent via-amber-200 to-transparent" />
-                            <span className={`${playfair.className} text-4xl italic text-amber-200`}>weds</span>
-                            <div className="h-[1px] w-20 bg-gradient-to-r from-transparent via-amber-200 to-transparent" />
-                        </div>
-                        <h1 className={`${greatVibes.className} text-6xl md:text-8xl lg:text-9xl text-transparent bg-clip-text bg-gradient-to-r from-amber-100 via-yellow-200 to-amber-100 drop-shadow-sm`}>
-                            {invitation.bride}
-                        </h1>
-                    </motion.div>
+                    {/* Royal Couple Name Reveal */}
+                    <div className="relative z-20 my-10 perspective-[1000px]">
+                        <motion.div
+                            initial={{ scale: 0.9, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            transition={{ duration: 1.5, ease: "easeOut" }}
+                            className="inline-block relative"
+                        >
+                            {/* Decorative Glow Behind */}
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-amber-500/10 blur-[60px] rounded-full pointer-events-none" />
+
+                            {/* GROOM NAME */}
+                            <motion.div
+                                initial={{ x: -100, opacity: 0, filter: "blur(10px)" }}
+                                animate={{ x: 0, opacity: 1, filter: "blur(0px)" }}
+                                transition={{ duration: 1.2, ease: "circOut" }}
+                            >
+                                <h1 className={`${greatVibes.className} text-7xl md:text-9xl lg:text-[10rem] text-[#FFF8E7] drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] leading-tight tracking-wide z-10 relative`}>
+                                    {invitation.groom}
+                                </h1>
+                            </motion.div>
+
+                            {/* 'Weds' Ornamental Divider */}
+                            <motion.div
+                                initial={{ scale: 0, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                transition={{ delay: 0.8, duration: 1, type: "spring", stiffness: 100 }}
+                                className="flex items-center justify-center gap-6 my-4 relative"
+                            >
+                                <div className="h-[2px] w-20 md:w-32 bg-gradient-to-r from-transparent via-amber-300 to-transparent shadow-[0_0_8px_rgba(251,191,36,0.8)]" />
+
+                                <div className="relative w-16 h-16 flex items-center justify-center">
+                                    <motion.div
+                                        animate={{ rotate: 360 }}
+                                        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                                        className="absolute inset-0 border border-amber-200/30 border-dashed rounded-full"
+                                    />
+                                    <span className={`${playfair.className} text-4xl italic text-amber-300 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] pb-1`}>&</span>
+                                </div>
+
+                                <div className="h-[2px] w-20 md:w-32 bg-gradient-to-r from-transparent via-amber-300 to-transparent shadow-[0_0_8px_rgba(251,191,36,0.8)]" />
+                            </motion.div>
+
+                            {/* BRIDE NAME */}
+                            <motion.div
+                                initial={{ x: 100, opacity: 0, filter: "blur(10px)" }}
+                                animate={{ x: 0, opacity: 1, filter: "blur(0px)" }}
+                                transition={{ duration: 1.2, delay: 0.4, ease: "circOut" }}
+                            >
+                                <h1 className={`${greatVibes.className} text-7xl md:text-9xl lg:text-[10rem] text-[#FFF8E7] drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] leading-tight tracking-wide z-10 relative`}>
+                                    {invitation.bride}
+                                </h1>
+                            </motion.div>
+                        </motion.div>
+                    </div>
 
                     {/* Royal Scroll Date */}
                     <motion.div
@@ -101,16 +142,87 @@ export default function RoyalTemplate({ id }: { id: string }) {
                         className="mt-16 mx-auto max-w-lg relative"
                     >
                         {/* Scroll SVG Graphic Placeholder */}
-                        <div className="relative py-8 px-12 bg-[#fffdf5] text-amber-900 rounded-sm shadow-[0_0_40px_rgba(251,191,36,0.2)] border-y-8 border-amber-700/80">
-                            {/* Corners */}
-                            <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-amber-900" />
-                            <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-amber-900" />
-                            <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-amber-900" />
-                            <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-amber-900" />
+                        {/* Shahi Scroll 3D Effect */}
+                        <div className="relative group perspective-[1000px]" style={{ perspective: "1000px" }}>
 
-                            <p className={`${cinzel.className} text-xl tracking-[0.2em] font-bold text-amber-800 mb-2`}>{invitation.day}</p>
-                            <h3 className={`${playfair.className} text-4xl md:text-5xl font-bold text-red-900 mb-2`}>{invitation.date}</h3>
-                            <p className={`${montserrat.className} text-sm tracking-widest uppercase text-amber-700`}>Udaipur, Rajasthan</p>
+                            {/* Top Golden Rod */}
+                            <div className="relative z-20 h-12 w-full bg-gradient-to-b from-amber-300 via-yellow-500 to-amber-700 rounded-full shadow-[0_5px_15px_rgba(0,0,0,0.4)] flex items-center justify-between px-2">
+                                {/* Left Knob */}
+                                <div className="w-8 h-14 bg-gradient-to-r from-amber-800 via-yellow-600 to-amber-800 rounded-full border-2 border-yellow-300 shadow-lg" />
+                                {/* Decorative Body of Rod */}
+                                <div className="absolute inset-x-10 h-full flex flex-col justify-center gap-[2px] opacity-30">
+                                    <div className="w-full h-[1px] bg-amber-900" />
+                                    <div className="w-full h-[1px] bg-amber-900" />
+                                </div>
+                                {/* Right Knob */}
+                                <div className="w-8 h-14 bg-gradient-to-r from-amber-800 via-yellow-600 to-amber-800 rounded-full border-2 border-yellow-300 shadow-lg" />
+                            </div>
+
+                            {/* Scroll Paper Body */}
+                            <div className="relative z-10 mx-6 -mt-6 bg-[#fffdf5] pt-16 pb-16 px-8 shadow-2xl border-x-[1px] border-amber-900/20"
+                                style={{
+                                    backgroundImage: `url("https://www.transparenttextures.com/patterns/cream-paper.png")`,
+                                    transformStyle: 'preserve-3d',
+                                    transform: 'rotateX(10deg) translateZ(-10px)',
+                                    transformOrigin: 'top center'
+                                }}
+                            >
+                                {/* Inner Shadows for Roll Effect (Top & Bottom) */}
+                                <div className="absolute top-0 left-0 w-full h-12 bg-gradient-to-b from-black/30 to-transparent pointer-events-none" />
+                                <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
+
+                                {/* Content */}
+                                <div className="text-center relative">
+                                    {/* Ornamental Divider */}
+                                    <div className="flex justify-center items-center gap-2 mb-6 opacity-60">
+                                        <div className="h-[1px] w-12 bg-amber-800" />
+                                        <div className="w-2 h-2 rotate-45 border border-amber-800" />
+                                        <div className="h-[1px] w-12 bg-amber-800" />
+                                    </div>
+
+                                    <p className={`${cinzel.className} text-xl tracking-[0.3em] font-bold text-amber-900 mb-3 drop-shadow-sm`}>{invitation.day}</p>
+
+                                    <h3 className={`${playfair.className} text-5xl md:text-6xl font-bold text-red-900 mb-3 drop-shadow-md scale-105 transform`}>
+                                        {invitation.date}
+                                    </h3>
+
+                                    <div className="mt-6 flex flex-col items-center gap-1">
+                                        <p className={`${montserrat.className} text-sm tracking-widest uppercase text-amber-800 font-semibold`}>
+                                            {invitation.venue.split(',')[0]}
+                                        </p>
+                                        <p className="text-xs text-amber-700/80 italic">Udaipur, Rajasthan</p>
+                                    </div>
+
+                                    {/* Ornamental Divider Bottom */}
+                                    <div className="flex justify-center items-center gap-2 mt-8 opacity-60">
+                                        <div className="h-[1px] w-12 bg-amber-800" />
+                                        <div className="w-2 h-2 rotate-45 border border-amber-800" />
+                                        <div className="h-[1px] w-12 bg-amber-800" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Bottom Golden Rod */}
+                            <div className="relative z-20 -mt-6 h-12 w-full bg-gradient-to-b from-amber-700 via-yellow-500 to-amber-300 rounded-full shadow-[0_-5px_15px_rgba(0,0,0,0.4)] flex items-center justify-between px-2">
+                                {/* Left Knob */}
+                                <div className="w-8 h-14 bg-gradient-to-r from-amber-800 via-yellow-600 to-amber-800 rounded-full border-2 border-yellow-300 shadow-lg" />
+                                {/* Decorative Body of Rod */}
+                                <div className="absolute inset-x-10 h-full flex flex-col justify-center gap-[2px] opacity-30">
+                                    <div className="w-full h-[1px] bg-amber-900" />
+                                    <div className="w-full h-[1px] bg-amber-900" />
+                                </div>
+                                {/* Right Knob */}
+                                <div className="w-8 h-14 bg-gradient-to-r from-amber-800 via-yellow-600 to-amber-800 rounded-full border-2 border-yellow-300 shadow-lg" />
+                            </div>
+
+                            {/* Hanging Tassel */}
+                            <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center animate-wiggle origin-top">
+                                <div className="w-[2px] h-10 bg-red-700" />
+                                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-red-600 to-red-900 shadow-md border border-red-400 flex items-center justify-center">
+                                    <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse" />
+                                </div>
+                            </div>
+
                         </div>
                     </motion.div>
                 </div>
@@ -161,8 +273,8 @@ export default function RoyalTemplate({ id }: { id: string }) {
                                 "In the presence of Agni and our loved ones..."
                             </p>
                             <div className="flex justify-center gap-4">
-                                <Image src="https://www.svgrepo.com/show/53299/wedding-rings.svg" width={40} height={40} alt="rings" className="opacity-60" />
-                                <Image src="https://www.svgrepo.com/show/396657/fire.svg" width={40} height={40} alt="fire" className="opacity-60" />
+                                <Image src={weddingRingsImg} width={40} height={40} alt="rings" className="opacity-60" />
+                                <Image src={sacredFireImg} width={40} height={40} alt="fire" className="opacity-60" />
                             </div>
                         </div>
 
@@ -239,24 +351,67 @@ export default function RoyalTemplate({ id }: { id: string }) {
             </section>
 
 
-            {/* --- MAP & ADDRESS (ROYAL CARD STYLE) --- */}
-            <section className="py-20 px-6 bg-cover bg-center relative" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/cream-paper.png')" }}>
-                <div className="max-w-4xl mx-auto bg-white/90 backdrop-blur-md p-8 md:p-12 border border-amber-200 shadow-[0_20px_60px_rgba(0,0,0,0.1)] text-center relative">
-                    {/* Decorative Corner Borders */}
-                    <div className="absolute top-4 left-4 w-16 h-16 border-t-2 border-l-2 border-amber-400" />
-                    <div className="absolute top-4 right-4 w-16 h-16 border-t-2 border-r-2 border-amber-400" />
-                    <div className="absolute bottom-4 left-4 w-16 h-16 border-b-2 border-l-2 border-amber-400" />
-                    <div className="absolute bottom-4 right-4 w-16 h-16 border-b-2 border-r-2 border-amber-400" />
-
-                    <MapPin className="mx-auto w-10 h-10 text-red-700 mb-6" />
-                    <h2 className={`${playfair.className} text-4xl font-bold text-gray-900 mb-4`}>The Royal Venue</h2>
-                    <p className="text-xl text-gray-600 font-serif italic mb-8">{invitation.venue}</p>
-                    <p className="text-gray-500 mb-8 max-w-sm mx-auto">{invitation.address}</p>
-
-                    <button className="px-10 py-4 bg-gradient-to-r from-amber-700 to-amber-900 text-white font-serif tracking-widest hover:scale-105 transition-transform shadow-xl">
-                        VIEW MAP
-                    </button>
+            {/* --- MAP & ADDRESS (GRAND ROYAL ARCH) --- */}
+            <section className="py-24 px-4 relative overflow-hidden flex items-center justify-center">
+                {/* Background Texture */}
+                <div className="absolute inset-0 bg-[#1a0505] opacity-95">
+                    <div className="absolute inset-0 opacity-20" style={{ backgroundImage: `url(${blackScalesImg.src})` }} />
                 </div>
+
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1 }}
+                    viewport={{ once: true }}
+                    className="relative z-10 w-full max-w-3xl"
+                >
+                    {/* Royal Border Container */}
+                    <div className="relative p-[2px] bg-gradient-to-b from-amber-300 via-yellow-500 to-amber-800 rounded-[2rem] shadow-[0_0_50px_rgba(251,191,36,0.3)]">
+                        <div className="bg-[#2c0b0e] rounded-[calc(2rem-2px)] p-8 md:p-14 text-center relative overflow-hidden border border-amber-900/50">
+
+                            {/* Decorative Corners (Inner Gold) */}
+                            <div className="absolute top-6 left-6 w-24 h-24 border-t-[3px] border-l-[3px] border-amber-400/60 rounded-tl-3xl" />
+                            <div className="absolute top-6 right-6 w-24 h-24 border-t-[3px] border-r-[3px] border-amber-400/60 rounded-tr-3xl" />
+                            <div className="absolute bottom-6 left-6 w-24 h-24 border-b-[3px] border-l-[3px] border-amber-400/60 rounded-bl-3xl" />
+                            <div className="absolute bottom-6 right-6 w-24 h-24 border-b-[3px] border-r-[3px] border-amber-400/60 rounded-br-3xl" />
+
+                            {/* Content */}
+                            <motion.div
+                                initial={{ y: 20, opacity: 0 }}
+                                whileInView={{ y: 0, opacity: 1 }}
+                                transition={{ delay: 0.3 }}
+                            >
+                                <div className="inline-block p-4 rounded-full bg-gradient-to-br from-amber-900 to-black border border-amber-500/50 shadow-lg mb-6 group">
+                                    <MapPin className="w-8 h-8 text-amber-400 group-hover:scale-110 transition-transform" />
+                                </div>
+
+                                <h2 className={`${cinzel.className} text-xl md:text-2xl text-amber-200 tracking-[0.3em] uppercase mb-2`}>The Royal Venue</h2>
+
+                                <div className="flex items-center justify-center gap-4 my-6 opacity-80">
+                                    <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-amber-400" />
+                                    <div className="rotate-45 w-2 h-2 bg-amber-400" />
+                                    <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-amber-400" />
+                                </div>
+
+                                <h3 className={`${playfair.className} text-4xl md:text-5xl lg:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-amber-100 via-yellow-200 to-amber-100 font-bold mb-6 drop-shadow-sm leading-tight`}>
+                                    {invitation.venue}
+                                </h3>
+
+                                <p className={`${montserrat.className} text-amber-200/70 text-sm md:text-base max-w-md mx-auto leading-relaxed tracking-wide mb-10`}>
+                                    {invitation.address}
+                                </p>
+
+                                <Link href="https://maps.google.com" target="_blank">
+                                    <button className="relative px-10 py-3 bg-transparent text-amber-300 font-serif tracking-widest uppercase text-sm border border-amber-400/30 hover:bg-amber-900/30 transition-all duration-300 group overflow-hidden">
+                                        <span className="relative z-10">Get Directions</span>
+                                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-400/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+                                        <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-amber-400 to-transparent opacity-50" />
+                                    </button>
+                                </Link>
+                            </motion.div>
+                        </div>
+                    </div>
+                </motion.div>
             </section>
 
             {/* --- FOOTER --- */}
