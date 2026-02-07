@@ -5,6 +5,8 @@ import { TEMPLATES, getTemplateById } from '@/constants/templates';
 import RoyalTemplate from '@/components/templates/RoyalTemplate';
 import ModernTemplate from '@/components/templates/ModernTemplate';
 import FloralTemplate from '@/components/templates/FloralTemplate';
+import GoldenLuxeTemplate from '@/components/templates/GoldenLuxeTemplate';
+import PaithaniTemplate from '@/components/templates/PaithaniTemplate';
 
 export default function TemplateDemoPage() {
     const { id } = useParams();
@@ -19,6 +21,10 @@ export default function TemplateDemoPage() {
             return <ModernTemplate id={templateId} />;
         case 'Floral':
             return <FloralTemplate id={templateId} />;
+        case 'Golden':
+            return <GoldenLuxeTemplate />;
+        case 'Marathi':
+            return <PaithaniTemplate />;
         default:
             return <RoyalTemplate id={templateId} />;
     }

@@ -4,7 +4,7 @@ export type TemplateType = {
     title: string;
     price: string;
     description: string;
-    type: 'Royal' | 'Modern' | 'Floral' | 'Traditional';
+    type: 'Royal' | 'Modern' | 'Floral' | 'Traditional' | 'Golden' | 'Marathi';
     coverImage: string;
     images: string[];
     features: string[];
@@ -38,6 +38,32 @@ export const TEMPLATES: Record<string, TemplateType> = {
         ],
         features: ["Floral Animations", "Pastel Theme", "Soft Typography", "Romantic Music"],
         tag: "New"
+    },
+    "w3": {
+        id: "w3",
+        title: "Golden Luxe",
+        price: "₹799",
+        description: "A premium North Indian style template focusing on glitz, glamour, and luxury. Features black and gold aesthetics with shimmer animations.",
+        type: 'Golden',
+        coverImage: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800",
+        images: [
+            "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800"
+        ],
+        features: ["Gold Shimmer", "Spotlight Effect", "Dark Theme", "Premium Animations"],
+        tag: "Premium"
+    },
+    "w4": {
+        id: "w4",
+        title: "Paithani Grace",
+        price: "₹499",
+        description: "Inspired by the rich heritage of Maharashtra. Features authentic Paithani saree textures, Warli art motifs, and royal peacock colors.",
+        type: 'Marathi',
+        coverImage: "https://images.unsplash.com/photo-1605218427306-0336d355dc03?auto=format&fit=crop&q=80&w=800", // Placeholder for saree texture
+        images: [
+            "https://images.unsplash.com/photo-1605218427306-0336d355dc03?auto=format&fit=crop&q=80&w=800"
+        ],
+        features: ["Paithani Texture", "Peacock Motifs", "Marathi Fonts", "Cultural Music"],
+        tag: "Traditional"
     },
     "w9": {
         id: "w9",
