@@ -7,6 +7,7 @@ import ModernTemplate from '@/components/templates/ModernTemplate';
 import FloralTemplate from '@/components/templates/FloralTemplate';
 import GoldenLuxeTemplate from '@/components/templates/GoldenLuxeTemplate';
 import PaithaniTemplate from '@/components/templates/PaithaniTemplate';
+import PunjabiDholTemplate from '@/components/templates/PunjabiDholTemplate';
 
 export default function TemplateDemoPage() {
     const { id } = useParams();
@@ -25,6 +26,8 @@ export default function TemplateDemoPage() {
             return <GoldenLuxeTemplate />;
         case 'Marathi':
             return <PaithaniTemplate />;
+        case 'Punjabi':
+            return <PunjabiDholTemplate id={templateId} />;
         default:
             return <RoyalTemplate id={templateId} />;
     }

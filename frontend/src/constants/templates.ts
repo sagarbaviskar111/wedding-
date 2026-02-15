@@ -4,7 +4,7 @@ export type TemplateType = {
     title: string;
     price: string;
     description: string;
-    type: 'Royal' | 'Modern' | 'Floral' | 'Traditional' | 'Golden' | 'Marathi';
+    type: 'Royal' | 'Modern' | 'Floral' | 'Traditional' | 'Golden' | 'Marathi' | 'Punjabi';
     coverImage: string;
     images: string[];
     features: string[];
@@ -64,6 +64,19 @@ export const TEMPLATES: Record<string, TemplateType> = {
         ],
         features: ["Paithani Texture", "Peacock Motifs", "Marathi Fonts", "Cultural Music"],
         tag: "Traditional"
+    },
+    "w5": {
+        id: "w5",
+        title: "Punjabi Dhol",
+        price: "₹450",
+        description: "Balle Balle! A vibrant celebration of Punjabi culture with 3D dhol animations, bhangra beats, and colorful festivities. Perfect for a high-energy Punjabi wedding!",
+        type: 'Punjabi',
+        coverImage: "https://images.unsplash.com/photo-1587271407850-8d438913d2cd?auto=format&fit=crop&q=80&w=800",
+        images: [
+            "https://images.unsplash.com/photo-1587271407850-8d438913d2cd?auto=format&fit=crop&q=80&w=800"
+        ],
+        features: ["3D Dhol Animations", "Bhangra Vibes", "Vibrant Colors", "Punjabi Typography"],
+        tag: "Fun"
     },
     "w9": {
         id: "w9",
