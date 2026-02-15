@@ -8,6 +8,7 @@ import FloralTemplate from '@/components/templates/FloralTemplate';
 import GoldenLuxeTemplate from '@/components/templates/GoldenLuxeTemplate';
 import PaithaniTemplate from '@/components/templates/PaithaniTemplate';
 import PunjabiDholTemplate from '@/components/templates/PunjabiDholTemplate';
+import RoyalRajwadaTemplate from '@/components/templates/RoyalRajwadaTemplate';
 
 export default function TemplateDemoPage() {
     const { id } = useParams();
@@ -17,6 +18,10 @@ export default function TemplateDemoPage() {
     // Dynamic rendering based on template type or ID
     switch (template.type) {
         case 'Royal':
+            // w1 uses RoyalTemplate, w6 uses RoyalRajwadaTemplate
+            if (templateId === 'w6') {
+                return <RoyalRajwadaTemplate id={templateId} />;
+            }
             return <RoyalTemplate id={templateId} />;
         case 'Modern':
             return <ModernTemplate id={templateId} />;

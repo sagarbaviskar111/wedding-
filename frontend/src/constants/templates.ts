@@ -78,6 +78,19 @@ export const TEMPLATES: Record<string, TemplateType> = {
         features: ["3D Dhol Animations", "Bhangra Vibes", "Vibrant Colors", "Punjabi Typography"],
         tag: "Fun"
     },
+    "w6": {
+        id: "w6",
+        title: "Royal Rajwada",
+        price: "₹899",
+        description: "Experience the grandeur of Rajputana royalty with majestic palace backgrounds, golden ornaments, and regal animations. A truly luxurious wedding invitation fit for royalty.",
+        type: 'Royal',
+        coverImage: "https://images.unsplash.com/photo-1510076857177-be9caa1c5307?auto=format&fit=crop&q=80&w=800",
+        images: [
+            "https://images.unsplash.com/photo-1510076857177-be9caa1c5307?auto=format&fit=crop&q=80&w=800"
+        ],
+        features: ["Palace Aesthetics", "Royal Crown Animations", "Golden Ornaments", "Rajasthani Heritage"],
+        tag: "Luxury"
+    },
     "w9": {
         id: "w9",
         title: "Modern White",
