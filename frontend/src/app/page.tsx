@@ -37,23 +37,23 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-rose-200 text-xs font-medium mb-8 backdrop-blur-md">
               <span className="w-2 h-2 rounded-full bg-rose-400 animate-pulse" />
-              Now Available in Local Languages
+              Now Available in 10+ Regional Languages
             </div>
 
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold tracking-tight mb-8 drop-shadow-2xl">
-              Crafting <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-200 via-purple-200 to-rose-200 animate-gradient">Moments</span> <br />
-              Into Memories
+              Create Beautiful <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-200 via-purple-200 to-rose-200 animate-gradient">Digital Wedding</span> <br />
+              Invitations Online
             </h1>
 
-            <p className="max-w-2xl mx-auto text-lg md:text-xl text-gray-200 mb-12 leading-relaxed drop-shadow-md">
-              Create stunning digital wedding invitations that capture the essence of your love story. Share seamlessly on WhatsApp, Email, and Social Media.
+            <p className="max-w-3xl mx-auto text-lg md:text-xl text-gray-200 mb-12 leading-relaxed drop-shadow-md">
+              Design stunning wedding invitations for Indian weddings with our premium templates. Choose from Royal, Punjabi, Gujarati, Marathi, South Indian & more cultural designs. Share instantly via WhatsApp, Email & Social Media with built-in RSVP tracking.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="px-8 py-4 bg-gradient-to-r from-rose-600 to-purple-600 text-white rounded-full font-medium text-lg hover:brightness-110 transition-all hover:scale-105 shadow-xl shadow-rose-500/25">
+              <button className="px-8 py-4 bg-gradient-to-r from-rose-600 to-purple-600 text-white rounded-full font-medium text-lg hover:brightness-110 transition-all hover:scale-105 shadow-xl shadow-rose-500/25" aria-label="Create your wedding invitation">
                 Create Invitation
               </button>
-              <button className="px-8 py-4 bg-white/10 text-white border border-white/20 rounded-full font-medium text-lg hover:bg-white/20 transition-all backdrop-blur-md">
+              <button className="px-8 py-4 bg-white/10 text-white border border-white/20 rounded-full font-medium text-lg hover:bg-white/20 transition-all backdrop-blur-md" aria-label="View wedding invitation examples">
                 View Examples
               </button>
             </div>
@@ -63,20 +63,28 @@ export default function Home() {
         {/* Features Grid */}
         <section className="py-24 bg-black/20 backdrop-blur-sm">
           <div className="max-w-7xl mx-auto px-6">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-5xl font-serif font-bold mb-4 drop-shadow-lg">
+                Why Choose Sagarbhai for Your Wedding Invitations?
+              </h2>
+              <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+                Everything you need to create and share beautiful digital wedding invitations
+              </p>
+            </div>
             <div className="grid md:grid-cols-3 gap-8">
               <FeatureCard
-                title="Premium Templates"
-                description="Choose from hundreds of professionally designed templates tailored for Indian weddings."
+                title="10+ Premium Templates"
+                description="Choose from professionally designed templates for Royal, Punjabi, Gujarati, Marathi, South Indian, and Western weddings. Each template is culturally authentic and beautifully animated."
                 icon="🎨"
               />
               <FeatureCard
-                title="Smart RSVP"
-                description="Track attendance in real-time. Guests can respond directly through the invitation."
+                title="Smart RSVP Tracking"
+                description="Track guest attendance in real-time with our built-in RSVP system. Guests can respond directly through the invitation with just one click. Export guest lists easily."
                 icon="💌"
               />
               <FeatureCard
-                title="Video Integration"
-                description="Add your pre-wedding shoot or a personal message to make it truly special."
+                title="Video & Music Integration"
+                description="Add your pre-wedding shoot videos, couple photos, or personal messages. Include background music to make your invitation truly special and memorable."
                 icon="🎥"
               />
             </div>

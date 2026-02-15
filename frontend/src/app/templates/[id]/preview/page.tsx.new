@@ -1,0 +1,54 @@
+import { Metadata } from 'next';
+import { getTemplateById } from '@/constants/templates';
+
+type Props = {
+  params: { id: string }
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const template = getTemplateById(params.id);
+  
+  if (!template) {
+    return {
+      title: 'Template Not Found',
+    };
+  }
+
+  const baseUrl = 'https://sagarbhai.com'; // Replace with your actual domain
+
+  return {
+    title: `${template.title} - ${template.type} Wedding Invitation Template`,
+    description: template.description,
+    keywords: [
+      template.title,
+      `${template.type} wedding invitation`,
+      'digital wedding card',
+      'online wedding invitation',
+      ...template.features,
+    ],
+    openGraph: {
+      title: `${template.title} - Premium ${template.type} Wedding Invitation`,
+      description: template.description,
+      images: [
+        {
+          url: template.coverImage,
+          width: 800,
+          height: 600,
+          alt: `${template.title} wedding invitation template preview`,
+        },
+      ],
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${template.title} - ${template.type} Wedding Invitation`,
+      description: template.description,
+      images: [template.coverImage],
+    },
+    alternates: {
+      canonical: `${baseUrl}/templates/${params.id}/preview`,
+    },
+  };
+}
+
+export { default } from './preview-page';
