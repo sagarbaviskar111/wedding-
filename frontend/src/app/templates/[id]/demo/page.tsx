@@ -9,6 +9,9 @@ import GoldenLuxeTemplate from '@/components/templates/GoldenLuxeTemplate';
 import PaithaniTemplate from '@/components/templates/PaithaniTemplate';
 import PunjabiDholTemplate from '@/components/templates/PunjabiDholTemplate';
 import RoyalRajwadaTemplate from '@/components/templates/RoyalRajwadaTemplate';
+import GujaratiGarbaTemplate from '@/components/templates/GujaratiGarbaTemplate';
+import TempleVowsTemplate from '@/components/templates/TempleVowsTemplate';
+import LoveStoryMotionTemplate from '@/components/templates/LoveStoryMotionTemplate';
 
 export default function TemplateDemoPage() {
     const { id } = useParams();
@@ -33,6 +36,12 @@ export default function TemplateDemoPage() {
             return <PaithaniTemplate />;
         case 'Punjabi':
             return <PunjabiDholTemplate id={templateId} />;
+        case 'Gujarati':
+            return <GujaratiGarbaTemplate id={templateId} />;
+        case 'South Indian':
+            return <TempleVowsTemplate id={templateId} />;
+        case 'Western':
+            return <LoveStoryMotionTemplate id={templateId} />;
         default:
             return <RoyalTemplate id={templateId} />;
     }

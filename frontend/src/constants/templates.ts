@@ -4,7 +4,7 @@ export type TemplateType = {
     title: string;
     price: string;
     description: string;
-    type: 'Royal' | 'Modern' | 'Floral' | 'Traditional' | 'Golden' | 'Marathi' | 'Punjabi';
+    type: 'Royal' | 'Modern' | 'Floral' | 'Traditional' | 'Golden' | 'Marathi' | 'Punjabi' | 'Gujarati' | 'South Indian' | 'Western';
     coverImage: string;
     images: string[];
     features: string[];
@@ -91,6 +91,32 @@ export const TEMPLATES: Record<string, TemplateType> = {
         features: ["Palace Aesthetics", "Royal Crown Animations", "Golden Ornaments", "Rajasthani Heritage"],
         tag: "Luxury"
     },
+    "w7": {
+        id: "w7",
+        title: "Gujarati Garba",
+        price: "₹350",
+        description: "Celebrate with vibrant Garba energy! Colorful dandiya animations, traditional Gujarati elements, and festive orange-red-pink gradients. Perfect for a joyful Gujarati wedding!",
+        type: 'Gujarati',
+        coverImage: "https://images.unsplash.com/photo-1545959755-f269d0335e49?auto=format&fit=crop&q=80&w=800",
+        images: [
+            "https://images.unsplash.com/photo-1545959755-f269d0335e49?auto=format&fit=crop&q=80&w=800"
+        ],
+        features: ["Garba Animations", "Dandiya Elements", "Gujarati Text", "Festive Colors"],
+        tag: "Festive"
+    },
+    "w8": {
+        id: "w8",
+        title: "Temple Vows",
+        price: "₹599",
+        description: "Sacred temple wedding with divine Om symbols, floating lotus petals, and spiritual ambiance. Traditional South Indian temple ceremony with serene aesthetics.",
+        type: 'South Indian',
+        coverImage: "https://images.unsplash.com/photo-1605367673523-a12d1b953456?auto=format&fit=crop&q=80&w=800",
+        images: [
+            "https://images.unsplash.com/photo-1605367673523-a12d1b953456?auto=format&fit=crop&q=80&w=800"
+        ],
+        features: ["Temple Aesthetics", "Sacred Symbols", "Lotus Animations", "Divine Ambiance"],
+        tag: "Divine"
+    },
     "w9": {
         id: "w9",
         title: "Modern White",
@@ -103,6 +129,19 @@ export const TEMPLATES: Record<string, TemplateType> = {
         ],
         features: ["Minimalist Design", "Modern Fonts", "Clean Layout", "Fast Loading"],
         tag: "Elegant"
+    },
+    "w10": {
+        id: "w10",
+        title: "Love Story Motion",
+        price: "₹999",
+        description: "Cinematic love story with movie-style animations, timeline storytelling, and dramatic video effects. A premium animated invitation that tells your unique journey!",
+        type: 'Western',
+        coverImage: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&q=80&w=800",
+        images: [
+            "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&q=80&w=800"
+        ],
+        features: ["Cinematic Animations", "Timeline Story", "Video Effects", "Film Style Design"],
+        tag: "Video"
     }
 };
 
