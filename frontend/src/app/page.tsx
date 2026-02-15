@@ -1,7 +1,9 @@
 import { EventTemplates } from "@/components/EventTemplates";
 import { FestiveBackground } from "@/components/FestiveBackground";
+import LanguageSelector from "@/components/LanguageSelector";
 import Image from "next/image";
 import Link from "next/link";
+import { HelpCircle } from "lucide-react";
 
 export default function Home() {
   return (
@@ -11,15 +13,21 @@ export default function Home() {
         {/* Navigation */}
         <nav className="fixed top-0 w-full z-50 bg-black/20 backdrop-blur-lg border-b border-white/10">
           <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div className="text-2xl font-bold font-serif text-rose-400 tracking-wider drop-shadow-md">
+            <Link href="/" className="text-2xl font-bold font-serif text-rose-400 tracking-wider drop-shadow-md hover:scale-105 transition-transform">
               Sagarbhai
-            </div>
+            </Link>
             <div className="hidden md:flex gap-8 text-sm font-medium text-gray-200">
-              <Link href="#" className="hover:text-white transition-colors hover:scale-105">Templates</Link>
-              <Link href="#" className="hover:text-white transition-colors hover:scale-105">Features</Link>
-              <Link href="#" className="hover:text-white transition-colors hover:scale-105">Pricing</Link>
+              <Link href="#templates" className="hover:text-white transition-colors hover:scale-105">Templates</Link>
+              <Link href="#features" className="hover:text-white transition-colors hover:scale-105">Features</Link>
+              <Link href="#pricing" className="hover:text-white transition-colors hover:scale-105">Pricing</Link>
+              <Link href="/blog" className="hover:text-white transition-colors hover:scale-105">Blog</Link>
+              <Link href="/help" className="flex items-center gap-1 hover:text-white transition-colors hover:scale-105">
+                <HelpCircle size={16} />
+                Help
+              </Link>
             </div>
-            <div className="flex gap-4">
+            <div className="flex items-center gap-3">
+              <LanguageSelector />
               <button className="text-sm font-medium px-4 py-2 hover:text-white text-gray-200 transition-colors">
                 Login
               </button>
@@ -115,8 +123,68 @@ export default function Home() {
         </section>
 
         {/* Footer */}
-        <footer className="py-12 border-t border-white/10 text-center text-gray-400 bg-black/40 backdrop-blur-md">
-          <p>© 2025 Sagarbhai Invitations. Made with ❤️ for your special day.</p>
+        <footer className="py-16 border-t border-white/10 bg-black/40 backdrop-blur-md">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="grid md:grid-cols-4 gap-8 mb-12">
+              {/* Brand */}
+              <div>
+                <div className="text-2xl font-bold font-serif text-rose-400 mb-4">Sagarbhai</div>
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  Create beautiful digital wedding invitations for your special day. Share instantly via WhatsApp!
+                </p>
+              </div>
+
+              {/* Quick Links */}
+              <div>
+                <h3 className="font-bold mb-4 text-white">Quick Links</h3>
+                <ul className="space-y-2 text-sm text-gray-400">
+                  <li><Link href="#templates" className="hover:text-rose-400 transition-colors">Templates</Link></li>
+                  <li><Link href="#features" className="hover:text-rose-400 transition-colors">Features</Link></li>
+                  <li><Link href="#pricing" className="hover:text-rose-400 transition-colors">Pricing</Link></li>
+                  <li><Link href="/blog" className="hover:text-rose-400 transition-colors">Blog</Link></li>
+                </ul>
+              </div>
+
+              {/* Support */}
+              <div>
+                <h3 className="font-bold mb-4 text-white">Support</h3>
+                <ul className="space-y-2 text-sm text-gray-400">
+                  <li><Link href="/help" className="hover:text-rose-400 transition-colors">Help Center</Link></li>
+                  <li><Link href="/help#faq" className="hover:text-rose-400 transition-colors">FAQs</Link></li>
+                  <li><Link href="/help#contact" className="hover:text-rose-400 transition-colors">Contact Us</Link></li>
+                  <li><a href="mailto:support@sagarbhai.com" className="hover:text-rose-400 transition-colors">Email Support</a></li>
+                </ul>
+              </div>
+
+              {/* Social */}
+              <div>
+                <h3 className="font-bold mb-4 text-white">Follow Us</h3>
+                <div className="flex gap-3">
+                  <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-rose-600 transition-colors">
+                    <span className="text-xl">📘</span>
+                  </a>
+                  <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-rose-600 transition-colors">
+                    <span className="text-xl">📷</span>
+                  </a>
+                  <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-rose-600 transition-colors">
+                    <span className="text-xl">🐦</span>
+                  </a>
+                </div>
+                <p className="text-gray-400 text-xs mt-4">
+                  Available in 8+ languages including Hindi, Gujarati, Marathi, Punjabi & more
+                </p>
+              </div>
+            </div>
+
+            {/* Bottom Bar */}
+            <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
+              <p>© 2026 Sagarbhai Invitations. Made with ❤️ for your special day.</p>
+              <div className="flex gap-6">
+                <Link href="/privacy" className="hover:text-rose-400 transition-colors">Privacy Policy</Link>
+                <Link href="/terms" className="hover:text-rose-400 transition-colors">Terms of Service</Link>
+              </div>
+            </div>
+          </div>
         </footer>
       </div>
     </div>
