@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Mukta, Tiro_Devanagari_Marathi, Rozha_One } from "next/font/google";
 import { MapPin, Gift, Bell, CheckCircle } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 
@@ -130,6 +131,25 @@ export default function PaithaniTemplate() {
                 <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
                     <SilkFabric />
                 </Canvas>
+            </div>
+
+
+            {/* Navigation / Back */}
+            <div className="fixed top-6 left-6 z-50">
+                <Link href={`/templates/p1/preview`} className="group flex items-center gap-2 px-5 py-2.5 bg-white/90 text-[#4a0e4e] rounded-full backdrop-blur-md shadow-2xl border-2 border-[#d4af37] hover:bg-[#fff8e1] transition-all font-semibold">
+                    <span className="group-hover:-translate-x-1 transition-transform">←</span> Back
+                </Link>
+            </div>
+
+            {/* Create Your Own Invitation Button */}
+            <div className="fixed top-6 right-6 z-50">
+                <Link
+                    href="/#templates"
+                    className="group flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-rose-600 to-purple-600 text-white rounded-full backdrop-blur-md shadow-2xl hover:brightness-110 transition-all font-semibold"
+                >
+                    Create Your Own Invitation
+                    <span className="group-hover:translate-x-1 transition-transform">→</span>
+                </Link>
             </div>
 
             {/* --- Paithani Border (Top) --- */}

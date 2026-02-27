@@ -3,7 +3,7 @@
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Check, Share2, ZoomIn, Star, Sparkles } from "lucide-react";
+import { ArrowLeft, Check, Share2, ZoomIn, Star, Sparkles, Music, Camera, CalendarHeart } from "lucide-react";
 import { getTemplateById } from "@/constants/templates";
 
 export default function TemplatePreview() {
@@ -34,25 +34,45 @@ export default function TemplatePreview() {
 
             <div className="pt-24 pb-20 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
 
-                {/* Left: Image/Preview Area */}
-                <div className="relative group rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-gray-900 aspect-[4/5] lg:aspect-auto h-[600px]">
-                    <div
-                        className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                        style={{ backgroundImage: `url(${template.coverImage})` }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
+                {/* Left: Image/Preview Area & Thumbnails */}
+                <div className="space-y-4">
+                    <div className="relative group rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-gray-900 aspect-[4/5] lg:aspect-auto h-[500px] xl:h-[600px]">
+                        <div
+                            className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                            style={{ backgroundImage: `url(${template.coverImage})` }}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
 
-                    <Link href={`/templates/${id}/demo`}>
-                        <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
-                            <button className="px-8 py-3 bg-white/20 backdrop-blur-md border border-white/30 rounded-full font-bold shadow-xl hover:scale-110 transition-transform">
-                                Live Preview
-                            </button>
+                        <Link href={`/templates/${id}/demo`}>
+                            <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
+                                <button className="px-8 py-3 bg-white/20 backdrop-blur-md border border-white/30 rounded-full font-bold shadow-xl hover:scale-110 transition-transform">
+                                    Live Preview
+                                </button>
+                            </div>
+                        </Link>
+
+                        <button className="absolute bottom-6 right-6 p-4 bg-black/50 backdrop-blur-md rounded-full text-white hover:bg-rose-600 transition-colors border border-white/20 shadow-lg">
+                            <ZoomIn size={24} />
+                        </button>
+                    </div>
+
+                    {/* Template Section Thumbnails */}
+                    {template.images && template.images.length > 0 && (
+                        <div className="pt-2">
+                            <h4 className="text-sm font-bold text-gray-400 mb-3 uppercase tracking-wider pl-1">Inside This Template</h4>
+                            <div className="flex gap-3 overflow-x-auto pb-2 custom-scrollbar">
+                                {template.images.map((img, idx) => (
+                                    <div key={idx} className="relative w-24 h-32 md:w-28 md:h-36 shrink-0 rounded-xl overflow-hidden border-2 border-white/10 hover:border-rose-400 transition-colors cursor-pointer group shadow-lg">
+                                        <div
+                                            className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                                            style={{ backgroundImage: `url(${img})` }}
+                                        />
+                                        <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-                    </Link>
-
-                    <button className="absolute bottom-6 right-6 p-4 bg-black/50 backdrop-blur-md rounded-full text-white hover:bg-rose-600 transition-colors border border-white/20">
-                        <ZoomIn size={24} />
-                    </button>
+                    )}
                 </div>
 
                 {/* Right: Details & Call to Action */}
@@ -74,10 +94,46 @@ export default function TemplatePreview() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {template.features?.map((feature, i) => (
                             <div key={i} className="flex items-center gap-3 text-gray-300 bg-white/5 p-3 rounded-lg border border-white/5">
-                                <Check size={18} className="text-emerald-400" />
-                                <span className="text-sm">{feature}</span>
+                                <Check size={18} className="text-emerald-400 shrink-0" />
+                                <span className="text-sm font-medium">{feature}</span>
                             </div>
                         ))}
+                    </div>
+
+                    {/* Standard Platform Inclusions */}
+                    <div className="border-t border-white/10 pt-6 mt-6">
+                        <h3 className="text-xl font-bold text-white mb-4">What's Included in Every Template:</h3>
+                        <div className="space-y-4">
+                            <div className="flex items-start gap-4 p-4 rounded-xl bg-gradient-to-br from-rose-900/20 to-transparent border border-rose-500/20">
+                                <div className="p-2.5 bg-rose-500/20 rounded-lg text-rose-400 shrink-0">
+                                    <Camera size={20} />
+                                </div>
+                                <div>
+                                    <h4 className="font-bold text-gray-200">Pre-Wedding Shoots</h4>
+                                    <p className="text-sm text-gray-400 mt-1">Upload and showcase your beautiful pre-wedding photography directly in the invitation timeline.</p>
+                                </div>
+                            </div>
+
+                            <div className="flex items-start gap-4 p-4 rounded-xl bg-gradient-to-br from-purple-900/20 to-transparent border border-purple-500/20">
+                                <div className="p-2.5 bg-purple-500/20 rounded-lg text-purple-400 shrink-0">
+                                    <Music size={20} />
+                                </div>
+                                <div>
+                                    <h4 className="font-bold text-gray-200">Custom Background Music</h4>
+                                    <p className="text-sm text-gray-400 mt-1">Add your favorite romantic track to play in the background while guests view your invitation.</p>
+                                </div>
+                            </div>
+
+                            <div className="flex items-start gap-4 p-4 rounded-xl bg-gradient-to-br from-amber-900/20 to-transparent border border-amber-500/20">
+                                <div className="p-2.5 bg-amber-500/20 rounded-lg text-amber-400 shrink-0">
+                                    <CalendarHeart size={20} />
+                                </div>
+                                <div>
+                                    <h4 className="font-bold text-gray-200">Multi-Event Management</h4>
+                                    <p className="text-sm text-gray-400 mt-1">Add details for Haldi, Mehendi, Sangeet, and Reception with distinct times and map locations.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div className="pt-8 flex flex-col sm:flex-row gap-4">

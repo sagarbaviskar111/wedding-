@@ -39,6 +39,17 @@ export default function PunjabiDholTemplate({ id }: { id: string }) {
                 </Link>
             </div>
 
+            {/* Create Your Own Invitation Button */}
+            <div className="fixed top-6 right-6 z-50">
+                <Link
+                    href="/#templates"
+                    className="group flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-rose-600 to-purple-600 text-white rounded-full backdrop-blur-md shadow-2xl hover:brightness-110 transition-all font-semibold"
+                >
+                    Create Your Own Invitation
+                    <span className="group-hover:translate-x-1 transition-transform">→</span>
+                </Link>
+            </div>
+
             {/* --- HERO SECTION: DHOL BEATS --- */}
             <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden">
                 {/* Animated Background */}
@@ -51,7 +62,7 @@ export default function PunjabiDholTemplate({ id }: { id: string }) {
                         priority
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-orange-900/60 via-transparent to-green-900/80" />
-                    
+
                     {/* Animated Circles (Dhol Beats Visualization) */}
                     <motion.div
                         animate={{
@@ -393,7 +404,7 @@ export default function PunjabiDholTemplate({ id }: { id: string }) {
             {/* --- EVENTS SECTION --- */}
             <section className="py-24 px-6 relative bg-gradient-to-br from-orange-900 via-red-900 to-green-900">
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')] opacity-30" />
-                
+
                 <div className="max-w-6xl mx-auto relative z-10">
                     <motion.h2
                         initial={{ opacity: 0, y: 30 }}
@@ -533,7 +544,7 @@ export default function PunjabiDholTemplate({ id }: { id: string }) {
             {/* --- FOOTER --- */}
             <footer className="bg-gradient-to-br from-orange-900 via-red-900 to-green-900 text-yellow-100 py-16 text-center relative overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')] opacity-20" />
-                
+
                 {/* Floating Emojis */}
                 <motion.div
                     animate={{ y: [0, -20, 0] }}
@@ -561,23 +572,23 @@ export default function PunjabiDholTemplate({ id }: { id: string }) {
                             BALLE BALLE!
                         </h2>
                     </motion.div>
-                    
+
                     <h3 className={`${dancingScript.className} text-4xl md:text-5xl text-white`}>
                         Thank You!
                     </h3>
-                    
+
                     <p className={`${poppins.className} text-orange-200 text-lg`}>
                         We can't wait to celebrate with you!
                     </p>
-                    
+
                     <div className="flex justify-center gap-3 text-4xl">
                         <motion.span animate={{ rotate: [0, 10, -10, 0] }} transition={{ duration: 1, repeat: Infinity }}>🎵</motion.span>
                         <motion.span animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 1, repeat: Infinity, delay: 0.2 }}>❤️</motion.span>
                         <motion.span animate={{ rotate: [0, -10, 10, 0] }} transition={{ duration: 1, repeat: Infinity, delay: 0.4 }}>🎵</motion.span>
                     </div>
-                    
+
                     <div className="h-px w-32 bg-gradient-to-r from-transparent via-yellow-400 to-transparent mx-auto my-6" />
-                    
+
                     <p className="text-sm text-orange-200/60 uppercase tracking-[0.3em]">
                         With Love & Blessings<br />
                         Singh & Kaur Families

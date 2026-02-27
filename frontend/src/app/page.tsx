@@ -6,11 +6,21 @@ import LanguageSelector from "@/components/LanguageSelector";
 import { HeaderAd, InFeedAd } from "@/components/GoogleAd";
 import Image from "next/image";
 import Link from "next/link";
-import { HelpCircle, Menu, X } from "lucide-react";
+import { HelpCircle, Menu, X, User, LogOut, Settings } from "lucide-react";
 import { useState } from "react";
+import { useAuth } from "@/contexts/AuthContext";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [profileMenuOpen, setProfileMenuOpen] = useState(false);
+  const { user, logout } = useAuth();
+  const router = useRouter();
+
+  const handleLogout = () => {
+    logout();
+    setProfileMenuOpen(false);
+  };
 
   return (
     <div className="min-h-screen bg-black text-white font-sans selection:bg-rose-500 selection:text-white relative">
@@ -38,12 +48,64 @@ export default function Home() {
             {/* Desktop Actions */}
             <div className="hidden lg:flex items-center gap-3">
               <LanguageSelector />
-              <button className="text-sm font-medium px-4 py-2 hover:text-white text-gray-200 transition-colors">
-                Login
-              </button>
-              <button className="text-sm font-medium px-5 py-2 bg-gradient-to-r from-rose-500 to-purple-600 text-white rounded-full hover:scale-105 transition-all shadow-lg">
-                Get Started
-              </button>
+
+              {user ? (
+                <div className="relative">
+                  <button
+                    onClick={() => setProfileMenuOpen(!profileMenuOpen)}
+                    className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-full transition-all border border-white/20"
+                  >
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-r from-rose-500 to-purple-600 flex items-center justify-center text-white font-semibold">
+                      {user.name.charAt(0).toUpperCase()}
+                    </div>
+                    <span className="text-sm font-medium">{user.name}</span>
+                  </button>
+
+                  {/* Profile Dropdown */}
+                  {profileMenuOpen && (
+                    <div className="absolute right-0 mt-2 w-56 bg-black/95 backdrop-blur-xl border border-white/20 rounded-xl shadow-2xl overflow-hidden">
+                      <div className="p-4 border-b border-white/10">
+                        <p className="text-sm font-semibold text-white">{user.name}</p>
+                        <p className="text-xs text-gray-400 truncate">{user.email}</p>
+                      </div>
+                      <div className="py-2">
+                        <Link
+                          href="/profile"
+                          onClick={() => setProfileMenuOpen(false)}
+                          className="flex items-center gap-3 px-4 py-2 hover:bg-white/10 transition-colors text-sm"
+                        >
+                          <User size={16} />
+                          My Profile
+                        </Link>
+                        <Link
+                          href="/profile"
+                          onClick={() => setProfileMenuOpen(false)}
+                          className="flex items-center gap-3 px-4 py-2 hover:bg-white/10 transition-colors text-sm"
+                        >
+                          <Settings size={16} />
+                          Settings
+                        </Link>
+                        <button
+                          onClick={handleLogout}
+                          className="w-full flex items-center gap-3 px-4 py-2 hover:bg-white/10 transition-colors text-sm text-red-400"
+                        >
+                          <LogOut size={16} />
+                          Logout
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <>
+                  <Link href="/login" className="text-sm font-medium px-4 py-2 hover:text-white text-gray-200 transition-colors">
+                    Login
+                  </Link>
+                  <Link href="/register" className="text-sm font-medium px-5 py-2 bg-gradient-to-r from-rose-500 to-purple-600 text-white rounded-full hover:scale-105 transition-all shadow-lg">
+                    Get Started
+                  </Link>
+                </>
+              )}
             </div>
 
             {/* Mobile Menu Button */}
@@ -78,12 +140,40 @@ export default function Home() {
 
                 <div className="pt-4 border-t border-white/10 space-y-3">
                   <LanguageSelector />
-                  <button className="w-full py-3 px-4 text-center hover:bg-white/10 rounded-lg transition-colors text-base">
-                    Login
-                  </button>
-                  <button className="w-full py-3 px-4 bg-gradient-to-r from-rose-500 to-purple-600 text-white rounded-lg font-medium text-base">
-                    Get Started
-                  </button>
+
+                  {user ? (
+                    <>
+                      <div className="p-4 bg-white/10 rounded-lg">
+                        <p className="text-sm font-semibold">{user.name}</p>
+                        <p className="text-xs text-gray-400 truncate">{user.email}</p>
+                      </div>
+                      <Link
+                        href="/profile"
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block w-full py-3 px-4 text-center bg-white/10 hover:bg-white/20 rounded-lg transition-colors text-base"
+                      >
+                        My Profile
+                      </Link>
+                      <button
+                        onClick={() => {
+                          handleLogout();
+                          setMobileMenuOpen(false);
+                        }}
+                        className="w-full py-3 px-4 text-center bg-red-500/20 hover:bg-red-500/30 text-red-400 rounded-lg transition-colors text-base"
+                      >
+                        Logout
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <Link href="/login" className="block w-full py-3 px-4 text-center hover:bg-white/10 rounded-lg transition-colors text-base">
+                        Login
+                      </Link>
+                      <Link href="/register" className="block w-full py-3 px-4 bg-gradient-to-r from-rose-500 to-purple-600 text-white rounded-lg font-medium text-base">
+                        Get Started
+                      </Link>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
@@ -108,12 +198,28 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 sm:px-0">
-              <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-rose-600 to-purple-600 text-white rounded-full font-medium text-base sm:text-lg hover:brightness-110 transition-all hover:scale-105 shadow-xl shadow-rose-500/25" aria-label="Create your wedding invitation">
+              <a
+                href="#templates"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-rose-600 to-purple-600 text-white rounded-full font-medium text-base sm:text-lg hover:brightness-110 transition-all hover:scale-105 shadow-xl shadow-rose-500/25 text-center"
+                aria-label="Create your wedding invitation"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('templates')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
                 Create Invitation
-              </button>
-              <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white/10 text-white border border-white/20 rounded-full font-medium text-base sm:text-lg hover:bg-white/20 transition-all backdrop-blur-md" aria-label="View wedding invitation examples">
+              </a>
+              <a
+                href="#templates"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white/10 text-white border border-white/20 rounded-full font-medium text-base sm:text-lg hover:bg-white/20 transition-all backdrop-blur-md text-center"
+                aria-label="View wedding invitation examples"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('templates')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
                 View Examples
-              </button>
+              </a>
             </div>
           </div>
         </section>

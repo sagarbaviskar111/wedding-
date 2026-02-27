@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Playfair_Display, Cinzel_Decorative, Rozha_One } from "next/font/google";
 import { Star, MapPin, PartyPopper, Disc, Music, Heart } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import Tilt from "vanilla-tilt";
 
 // Authentically "North Indian Royal" Fonts
@@ -146,6 +147,25 @@ export default function GoldenLuxeTemplate() {
                     background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255, 215, 0, 0.3), transparent 40%)`
                 }}
             />
+
+
+            {/* Navigation / Back */}
+            <div className="fixed top-6 left-6 z-50">
+                <Link href={`/templates/g1/preview`} className="group flex items-center gap-2 px-5 py-2.5 bg-black/80 text-[#d4af37] rounded-full backdrop-blur-md shadow-2xl border-2 border-[#d4af37]/50 hover:bg-[#d4af37]/20 transition-all font-semibold">
+                    <span className="group-hover:-translate-x-1 transition-transform">←</span> Back
+                </Link>
+            </div>
+
+            {/* Create Your Own Invitation Button */}
+            <div className="fixed top-6 right-6 z-50">
+                <Link
+                    href="/#templates"
+                    className="group flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-rose-600 to-purple-600 text-white rounded-full backdrop-blur-md shadow-2xl hover:brightness-110 transition-all font-semibold"
+                >
+                    Create Your Own Invitation
+                    <span className="group-hover:translate-x-1 transition-transform">→</span>
+                </Link>
+            </div>
 
             {/* Background Pattern */}
             <div className={`fixed inset-0 opacity-10 pointer-events-none z-0 bg-[url('https://www.transparenttextures.com/patterns/black-scales.png')]`} />

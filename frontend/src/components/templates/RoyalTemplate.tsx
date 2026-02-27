@@ -20,22 +20,22 @@ const playfair = Playfair_Display({ subsets: ["latin"] });
 const cinzel = Cinzel({ subsets: ["latin"] });
 const montserrat = Montserrat({ subsets: ["latin"] });
 
-export default function RoyalTemplate({ id }: { id: string }) {
+export default function RoyalTemplate({ id, formData }: { id: string, formData?: any }) {
 
-    // Default data for Royal Theme
+    const parsedDate = formData?.date ? new Date(formData.date) : null;
     const invitation = {
-        groom: "Aditya Singh",
-        bride: "Priya Sharma",
-        date: "December 14, 2025",
-        day: "Sunday",
+        groom: formData?.groomName || "Aditya Singh",
+        bride: formData?.brideName || "Priya Sharma",
+        date: parsedDate ? parsedDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : "December 14, 2025",
+        day: parsedDate ? parsedDate.toLocaleDateString('en-US', { weekday: 'long' }) : "Sunday",
         ceremonyTime: "10:00 AM",
         receptionTime: "7:00 PM",
-        venue: "The Oberoi Udaivilas, Udaipur",
-        address: "Badi-Gorela-Mulla Talai Rd, Haridas Ji Ki Magri, Udaipur, Rajasthan",
+        venue: formData?.venue || "The Oberoi Udaivilas, Udaipur",
+        address: formData?.venue ? "" : "Badi-Gorela-Mulla Talai Rd, Haridas Ji Ki Magri, Udaipur, Rajasthan",
         story: "Two souls, one heart. A destiny written in the stars.",
-        coverImage: coverImg, // Palace/Royal
-        groomImg: groomImg,
-        brideImg: brideImg,
+        coverImage: formData?.image || coverImg, // Palace/Royal
+        groomImg: formData?.groomImage || groomImg,
+        brideImg: formData?.brideImage || brideImg,
     };
 
     return (
@@ -48,16 +48,27 @@ export default function RoyalTemplate({ id }: { id: string }) {
                 </Link>
             </div>
 
+            {/* Create Your Own Invitation Button - hide in preview mode if formData is passed */}
+            {!formData && (
+                <div className="fixed top-6 right-6 z-50">
+                    <Link
+                        href="/#templates"
+                        className="group flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-rose-600 to-purple-600 text-white rounded-full backdrop-blur-md shadow-2xl hover:brightness-110 transition-all font-semibold"
+                    >
+                        Create Your Own Invitation
+                        <span className="group-hover:translate-x-1 transition-transform">→</span>
+                    </Link>
+                </div>
+            )}
+
             {/* --- HERO SECTION: ILLUMINATED PALACE --- */}
             <section className="relative min-h-[110vh] flex flex-col items-center justify-center text-center px-4 overflow-hidden">
                 {/* Background Image with Overlay */}
                 <div className="absolute inset-0 z-0">
-                    <Image
-                        src={invitation.coverImage}
+                    <img
+                        src={typeof invitation.coverImage === 'string' ? invitation.coverImage : invitation.coverImage.src}
                         alt="Royal Palace"
-                        fill
-                        className="object-cover animate-slow-zoom"
-                        priority
+                        className="object-cover w-full h-full absolute inset-0 animate-slow-zoom"
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-amber-950/80" />
                     {/* Decorative Pattern Overlay */}
@@ -247,7 +258,7 @@ export default function RoyalTemplate({ id }: { id: string }) {
                         {/* Groom with Elephant Theme */}
                         <div className="order-2 lg:order-1 space-y-6 group">
                             <div className="relative w-64 h-80 mx-auto rounded-[50px_50px_0_0] border-4 border-amber-200 overflow-hidden shadow-2xl rotate-3 transition-transform group-hover:rotate-0 duration-500">
-                                <Image src={invitation.groomImg} fill alt="Groom" className="object-cover" />
+                                <img src={typeof invitation.groomImg === 'string' ? invitation.groomImg : invitation.groomImg.src} alt="Groom" className="object-cover w-full h-full absolute inset-0" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                                 <div className="absolute bottom-4 left-0 w-full text-white font-serif text-2xl">{invitation.groom}</div>
                             </div>
@@ -281,7 +292,7 @@ export default function RoyalTemplate({ id }: { id: string }) {
                         {/* Bride with Doli Theme */}
                         <div className="order-3 space-y-6 group">
                             <div className="relative w-64 h-80 mx-auto rounded-[50px_50px_0_0] border-4 border-amber-200 overflow-hidden shadow-2xl -rotate-3 transition-transform group-hover:rotate-0 duration-500">
-                                <Image src={invitation.brideImg} fill alt="Bride" className="object-cover" />
+                                <img src={typeof invitation.brideImg === 'string' ? invitation.brideImg : invitation.brideImg.src} alt="Bride" className="object-cover w-full h-full absolute inset-0" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                                 <div className="absolute bottom-4 left-0 w-full text-white font-serif text-2xl">{invitation.bride}</div>
                             </div>

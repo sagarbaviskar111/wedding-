@@ -21,7 +21,10 @@ export const TEMPLATES: Record<string, TemplateType> = {
         coverImage: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800",
         images: [
             "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800",
-            "https://images.unsplash.com/photo-1587271407850-8d438913d2cd?auto=format&fit=crop&q=80&w=800"
+            "https://images.unsplash.com/photo-1587271407850-8d438913d2cd?auto=format&fit=crop&q=80&w=800",
+            "https://images.unsplash.com/photo-1522673607200-1645062cd95f?auto=format&fit=crop&q=80&w=800",
+            "https://images.unsplash.com/photo-1605367673523-a12d1b953456?auto=format&fit=crop&q=80&w=800",
+            "https://images.unsplash.com/photo-1583939000340-02ba2d0434b2?auto=format&fit=crop&q=80&w=800"
         ],
         features: ["Royal Aesthetics", "Traditional Music", "Elephant Animations", "Gold Foil Effects"],
         tag: "Bestseller"
